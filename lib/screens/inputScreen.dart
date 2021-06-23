@@ -7,7 +7,25 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InputPage extends StatelessWidget {
-  const InputPage({Key? key}) : super(key: key);
+  Color maleColor = kDisableColor;
+  Color femaleColor = kDisableColor;
+
+  void updateColor(int gender) {
+    if (gender == 1) {
+      if (maleColor == kDisableColor){
+        maleColor = kActiveCardColor;
+      }else{
+        maleColor = kActiveCardColor;
+      }
+    }
+    if (gender == 2) {
+      if (femaleColor == kDisableColor){
+        femaleColor = kActiveCardColor;
+      }else{
+        femaleColor = kActiveCardColor;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +40,10 @@ class InputPage extends StatelessWidget {
               child: Row(
                 children: [
                   reusableCard(
-                    onPressed: (){
+                    onPressed: () {
                       print('male is clicked');
-                    },
+                    }
+                    ,
                     color: kDisableColor,
                     cardChild: Iconcontent(
                       icon: FontAwesomeIcons.mars,
@@ -32,7 +51,7 @@ class InputPage extends StatelessWidget {
                     ),
                   ),
                   reusableCard(
-                    onPressed: (){
+                    onPressed: () {
                       print('female is clicked');
                     },
                     color: kDisableColor,
@@ -46,7 +65,7 @@ class InputPage extends StatelessWidget {
             ),
             Expanded(
               child: reusableCard(
-                onPressed: (){
+                onPressed: () {
                   print(' middle row is clicked');
                 },
                 color: kDisableColor,
@@ -58,29 +77,29 @@ class InputPage extends StatelessWidget {
             ),
             Expanded(
                 child: Row(
-              children: [
-                reusableCard(
-                  onPressed: (){
-                    print('last row left side is clicked');
-                  },
-                  color: kDisableColor,
-                  cardChild: Iconcontent(
-                    icon: FontAwesomeIcons.mars,
-                    label: "MALE",
-                  ),
-                ),
-                reusableCard(
-                  onPressed: (){
-                    print('last row right side is clicked');
-                  },
-                  color: kDisableColor,
-                  cardChild: Iconcontent(
-                    icon: FontAwesomeIcons.mars,
-                    label: "MALE",
-                  ),
-                )
-              ],
-            )),
+                  children: [
+                    reusableCard(
+                      onPressed: () {
+                        print('last row left side is clicked');
+                      },
+                      color: kDisableColor,
+                      cardChild: Iconcontent(
+                        icon: FontAwesomeIcons.mars,
+                        label: "MALE",
+                      ),
+                    ),
+                    reusableCard(
+                      onPressed: () {
+                        print('last row right side is clicked');
+                      },
+                      color: kDisableColor,
+                      cardChild: Iconcontent(
+                        icon: FontAwesomeIcons.mars,
+                        label: "MALE",
+                      ),
+                    )
+                  ],
+                )),
           ],
         ));
   }
