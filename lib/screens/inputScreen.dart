@@ -6,26 +6,38 @@ import 'package:bmi_calculator/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class InputPage extends StatelessWidget {
-  Color maleColor = kDisableColor;
-  Color femaleColor = kDisableColor;
+enum Gender { male, female }
 
-  void updateColor(int gender) {
-    if (gender == 1) {
-      if (maleColor == kDisableColor){
-        maleColor = kActiveCardColor;
-      }else{
-        maleColor = kActiveCardColor;
-      }
-    }
-    if (gender == 2) {
-      if (femaleColor == kDisableColor){
-        femaleColor = kActiveCardColor;
-      }else{
-        femaleColor = kActiveCardColor;
-      }
-    }
-  }
+
+class InputPage extends StatefulWidget {
+  @override
+  _InputPageState createState() => _InputPageState();
+}
+
+class _InputPageState extends State<InputPage> {
+
+  Gender selectedgender;
+  // Color maleColor = kDisableColor;
+  // Color femaleColor = kDisableColor;
+  //
+  // void updateColor(Gender selectedgender) {
+  //   if (selectedgender == Gender.male) {
+  //     if (maleColor == kDisableColor){
+  //       maleColor = kActiveCardColor;
+  //       femaleColor = kDisableColor;
+  //     }else{
+  //       maleColor = kDisableColor;
+  //     }
+  //   }
+  //   if (selectedgender == Gender.female) {
+  //     if (femaleColor == kDisableColor){
+  //       femaleColor = kActiveCardColor;
+  //       maleColor = kDisableColor;
+  //     }else{
+  //       femaleColor = kDisableColor;
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +53,14 @@ class InputPage extends StatelessWidget {
                 children: [
                   reusableCard(
                     onPressed: () {
+                      setState(() {
+                        selectedgender = Gender.male;
+                      });
                       print('male is clicked');
-                    }
-                    ,
-                    color: kDisableColor,
+                    },
+                    color: selectedgender == Gender.male
+                        ? kActiveCardColor
+                        : kDisableColor,
                     cardChild: Iconcontent(
                       icon: FontAwesomeIcons.mars,
                       label: "MALE",
@@ -52,9 +68,14 @@ class InputPage extends StatelessWidget {
                   ),
                   reusableCard(
                     onPressed: () {
+                      setState(() {
+                        selectedgender = Gender.female;
+                      });
                       print('female is clicked');
                     },
-                    color: kDisableColor,
+                    color: selectedgender == Gender.female
+                        ? kActiveCardColor
+                        : kDisableColor,
                     cardChild: Iconcontent(
                       icon: FontAwesomeIcons.venus,
                       label: "FEMALE",
@@ -77,29 +98,29 @@ class InputPage extends StatelessWidget {
             ),
             Expanded(
                 child: Row(
-                  children: [
-                    reusableCard(
-                      onPressed: () {
-                        print('last row left side is clicked');
-                      },
-                      color: kDisableColor,
-                      cardChild: Iconcontent(
-                        icon: FontAwesomeIcons.mars,
-                        label: "MALE",
-                      ),
-                    ),
-                    reusableCard(
-                      onPressed: () {
-                        print('last row right side is clicked');
-                      },
-                      color: kDisableColor,
-                      cardChild: Iconcontent(
-                        icon: FontAwesomeIcons.mars,
-                        label: "MALE",
-                      ),
-                    )
-                  ],
-                )),
+              children: [
+                reusableCard(
+                  onPressed: () {
+                    print('last row left side is clicked');
+                  },
+                  color: kDisableColor,
+                  cardChild: Iconcontent(
+                    icon: FontAwesomeIcons.mars,
+                    label: "MALE",
+                  ),
+                ),
+                reusableCard(
+                  onPressed: () {
+                    print('last row right side is clicked');
+                  },
+                  color: kDisableColor,
+                  cardChild: Iconcontent(
+                    icon: FontAwesomeIcons.mars,
+                    label: "MALE",
+                  ),
+                )
+              ],
+            )),
           ],
         ));
   }
