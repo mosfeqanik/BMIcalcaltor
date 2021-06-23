@@ -22,6 +22,9 @@ class InputPage extends StatelessWidget {
               child: Row(
                 children: [
                   reusableCard(
+                    onPressed: (){
+                      print('male is clicked');
+                    },
                     color: kDisableColor,
                     cardChild: Iconcontent(
                       icon: FontAwesomeIcons.mars,
@@ -29,6 +32,9 @@ class InputPage extends StatelessWidget {
                     ),
                   ),
                   reusableCard(
+                    onPressed: (){
+                      print('female is clicked');
+                    },
                     color: kDisableColor,
                     cardChild: Iconcontent(
                       icon: FontAwesomeIcons.venus,
@@ -40,6 +46,9 @@ class InputPage extends StatelessWidget {
             ),
             Expanded(
               child: reusableCard(
+                onPressed: (){
+                  print(' middle row is clicked');
+                },
                 color: kDisableColor,
                 cardChild: Iconcontent(
                   icon: FontAwesomeIcons.mars,
@@ -51,6 +60,9 @@ class InputPage extends StatelessWidget {
                 child: Row(
               children: [
                 reusableCard(
+                  onPressed: (){
+                    print('last row left side is clicked');
+                  },
                   color: kDisableColor,
                   cardChild: Iconcontent(
                     icon: FontAwesomeIcons.mars,
@@ -58,6 +70,9 @@ class InputPage extends StatelessWidget {
                   ),
                 ),
                 reusableCard(
+                  onPressed: (){
+                    print('last row right side is clicked');
+                  },
                   color: kDisableColor,
                   cardChild: Iconcontent(
                     icon: FontAwesomeIcons.mars,
